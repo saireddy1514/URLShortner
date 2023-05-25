@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function GenerateURL() {
+export default function GenerateURL(props) {
   const [textcopy,settestcopy]= useState(false);
   function copyText() {
     var divElement = document.getElementById("myUrl");
@@ -10,7 +10,6 @@ export default function GenerateURL() {
     window.getSelection().addRange(range);
     document.execCommand("copy");
     settestcopy(true);
-    // alert("Text copied to clipboard!");
   }
   window.onclick = function (event) {
     var myBox = document.getElementById('myUrl');
@@ -37,7 +36,7 @@ export default function GenerateURL() {
             <span>
               <b>Link:</b>{" "}
               <p style={{ wordWrap: "break-word" }} id="myUrl">
-                urlshortner.netlify.app/sfsdgfr
+                urlshortner.netlify.app/{props.slink}
               </p>
             </span>
             <div
@@ -50,7 +49,6 @@ export default function GenerateURL() {
               <button className="btn btn-success m-1" disabled><i class="bi bi-pen"></i> Edit </button>
             </div>
           </div>
-          {/* <h6>If you want to edit the link, please login first</h6> */}
         </div>
       </div>
     </div>
