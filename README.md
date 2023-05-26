@@ -17,3 +17,10 @@ This open source repository contains a url shortner project build on MERN Stack.
   <li>In the <b>.env</b> file, paste the URL of your MongoDB database and the server port number that you want to use.</li>
   <li>In both the frontend and backend folder command prompts, type <b>npm start</b> to start the application.</li>
 </ul>
+
+# Future Updates
+<ul>
+<li>Edit the link</li>
+<li>Login & Register</li>
+<li>View & Delete past links</li>
+</ul>

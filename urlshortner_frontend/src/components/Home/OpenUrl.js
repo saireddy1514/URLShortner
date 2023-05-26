@@ -9,12 +9,13 @@ export default function OpenUrl() {
     try{
         useEffect(() => {
             (async () => {
-                await axios.get(surl).then((response)=>{
+                await axios.get(surl).then((response)=>{ //when you run the url it calls the backend api to fetch main url.
                     if(response.data.status){
-                            // window.open(response.data.url,"__self");
+                            //if url found then it redirects to main url
                             window.location.replace(response.data.url)
                     }
                     else{
+                        // if not print the message from backend
                         setmessage(response.data.msg);
                     }
                 }).catch((err)=>{

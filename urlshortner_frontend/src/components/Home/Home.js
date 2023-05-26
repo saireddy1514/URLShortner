@@ -7,7 +7,7 @@ import Notification from '../Notification/Notification';
 export default function Home() {
   return (
     <>
-        <Notification/>
+      <Notification/>
       <Navbar/>
       <NavbarContent/>
     </>

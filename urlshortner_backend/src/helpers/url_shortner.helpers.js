@@ -4,12 +4,13 @@ var randomurl="";
 
 exports.checkshorturl= async (url)=>{
 
-    await urlSchema.findOne({shorturl:url}).then((shorturls)=>{
+    await urlSchema.findOne({shorturl:url}).then((shorturls)=>{  //checking for string exists
         if(shorturls===null){
             randomurl=url;
         }
         else{
-            randomurl = randomstring.generate(7);   
+            // if exists then update the string with new random url string
+            randomurl = randomstring.generate(7);    
         }
       
     })

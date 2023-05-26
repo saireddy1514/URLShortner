@@ -13,10 +13,12 @@ export default function NavbarContent() {
     const config = {     
       headers: { 'content-type': 'application/json' }
     }
+    //using axios to send the mainurl to backend server
     axios.post(SendAPI, JSON.stringify({"link":form.elements.url.value}), config)
     .then(response => {
       if(response.data.status){
         setshowBar(true);
+        // fetching shorturl from backend and storing it.
         setshorturllink(response.data.shorturl);
       }  
       else{
@@ -60,6 +62,7 @@ export default function NavbarContent() {
           </div>
         </div>
       </form>
+      {/* if short url found, then display the url*/}
       {showBar&&
       <GenerateURL slink={shorturllink}/>}
     </div>

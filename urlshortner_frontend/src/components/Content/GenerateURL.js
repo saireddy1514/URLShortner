@@ -36,7 +36,7 @@ export default function GenerateURL(props) {
             <span>
               <b>Link:</b>{" "}
               <p style={{ wordWrap: "break-word" }} id="myUrl">
-                urlshortner.netlify.app/{props.slink}
+              http://localhost:3000/{props.slink}
               </p>
             </span>
             <div
@@ -46,7 +46,7 @@ export default function GenerateURL(props) {
               }}
             >
               {!textcopy ?<button className="btn btn-success m-1" onClick={copyText}><i class="bi bi-clipboard"></i> Copy</button>:<button className="btn btn-success m-1"><i class="bi bi-clipboard-check"></i> Copied</button>}
-              <button className="btn btn-success m-1" disabled><i class="bi bi-pen"></i> Edit </button>
+              <button className="btn btn-success m-1" disabled><i class="bi bi-pen"></i> Edit </button> //as of now disabled will update it soon
             </div>
           </div>
         </div>
