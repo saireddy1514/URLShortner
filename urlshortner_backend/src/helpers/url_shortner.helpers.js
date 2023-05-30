@@ -1,4 +1,5 @@
 const urlSchema = require('../schemas/url_shortner.schema');
+const userSchema = require('../schemas/user.schema')
 const randomstring = require("randomstring");
 var randomurl="";
 
@@ -19,4 +20,18 @@ exports.checkshorturl= async (url)=>{
     })
     return randomurl;
    
+}
+
+
+exports.checkEmail = async (email)=>{
+    var statuscheck=false;
+    await userSchema.findOne({email:email}).then((emailcheck)=>{
+        if(emailcheck===null){
+            statuscheck=true;
+        }   
+        else{
+            statuscheck=false;
+        }    
+    }).catch((err)=>{console.log(err);})
+    return statuscheck;
 }

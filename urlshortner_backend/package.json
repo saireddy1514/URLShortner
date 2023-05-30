@@ -10,11 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "email-validator": "^2.0.4",
     "express": "^4.18.2",
+    "handlebars": "^4.7.7",
+    "handlebars-email": "^1.1.0",
     "mongodb": "^5.5.0",
     "mongoose": "^7.2.1",
+    "nodemailer": "^6.9.3",
     "randomstring": "^1.2.3"
   }
 }

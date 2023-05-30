@@ -25,3 +25,34 @@ exports.fetchMainUrl = (req,res)=>{
     }
   })
 }
+
+exports.registerController =(req,res)=>{
+  url_shortner_model.registerModel({data:req.body},(err,data)=>{
+    if(err){
+      res.status(200).send({status:false,msg:"Error while fetching"})
+    }
+    else{
+      if(data.status){
+        res.status(200).send({status:true,msg:"Registration Success"})
+      }
+      else{
+        res.status(200).send({status:false,msg:"Registration Failed",ermsg:data.msgs})
+      }
+    }
+  })
+}
+exports.loginController = (req,res)=>{
+url_shortner_model.loginModel({data:req.body},(err,data)=>{
+  if(err){
+    res.status(200).send({status:false,msg:"Error while fetching"})
+  }
+  else{
+    if(data.status){
+      res.status(200).send({status:true,msg:"Login Success"})
+    }
+    else{
+      res.status(200).send({status:false,msg:"Login Failed"})
+    }
+  }
+})
+}
