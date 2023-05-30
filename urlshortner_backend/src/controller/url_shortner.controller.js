@@ -51,8 +51,24 @@ url_shortner_model.loginModel({data:req.body},(err,data)=>{
       res.status(200).send({status:true,msg:"Login Success"})
     }
     else{
-      res.status(200).send({status:false,msg:"Login Failed"})
+      res.status(200).send({status:false,msg:"Login Failed",msgs:data.msgs})
     }
   }
 })
+}
+
+exports.otpverifyController = (req,res)=>{
+  url_shortner_model.otpverifyModel({data:req.body},(err,data)=>{
+    if(err){
+      res.status(200).send({status:false,msg:"Error while fetching"})
+    }
+    else{
+      if(data.status){
+        res.status(200).send({status:true,msg:"OTP Verification Completed"})
+      }
+      else{
+        res.status(200).send({status:false,msg:"OTP Verification Failed",msgs:data.msgs})
+      }
+    }
+  })
 }

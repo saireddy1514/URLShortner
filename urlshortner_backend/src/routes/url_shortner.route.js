@@ -4,5 +4,5 @@ module.exports = (app) => {
   app.get("/api/:url",urlShortnerController.fetchMainUrl); // fetching mainurl from shorturl
   app.post("/api/login",urlShortnerController.loginController); // login user
   app.post("/api/register",urlShortnerController.registerController); // register user
-  // app.post("/api/otpverify",urlShortnerController.otpverifyController); // otp verification
+  app.post("/api/otpverify",urlShortnerController.otpverifyController); // otp verification
 };

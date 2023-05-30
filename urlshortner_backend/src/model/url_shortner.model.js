@@ -51,7 +51,33 @@ exports.getMainUrl=(getmainurl,result)=>{
 }
 
 exports.loginModel =(loginresult,result)=>{
-
+    try{
+        var email = loginresult.data.email;
+        var password = loginresult.data.password;
+        userSchema.findOne({email:email}).then((found)=>{
+            if(found===null){
+                result(null,{status:false,msgs:["Email Not Found"]})
+            }
+            else{
+                if(found.emailVerify){   
+                    bcrypt.compare(password,found.password).then((response)=>{
+                        if(response){
+                            result(null,{status:true})
+                        }
+                        else{
+                            result(null,{status:false,msgs:["Password is incorrrect"]})
+                        }
+                    })
+                }
+                else{
+                result(null,{status:false,msgs:["Email Not Verified"]})
+                }
+            }
+        })
+    }
+    catch(err){
+        result(err,null);
+    }
 }
 exports.registerModel =(registerresult,result)=>{
     try{
@@ -95,6 +121,52 @@ exports.registerModel =(registerresult,result)=>{
             }
             result(null,{status:false,msgs:requesterrors});
         }
+    }
+    catch(err){
+        result(err,null);
+    }
+}
+
+exports.otpverifyModel =(otpresult,result)=>{
+    try{
+        let email = otpresult.data.email;
+        let otp = otpresult.data.otp;
+
+        otpSchema.findOne({email: email}).then((otpfind)=>{
+                if(otpfind===null){
+                    result(null,{status:false,msgs:["Email not found"]});
+                }
+                else{
+                    if(otpfind.otp===otp){
+                        userSchema.findOne({email:email}).then((finduser)=>{
+                            if(finduser===null){
+                                result(null,{status:false,msgs:["Email not found to update the verificaton status"]});
+                            }
+                            else{
+                                userSchema.updateOne({emailVerify:true}).then((updateverification)=>{
+                                    if(updateverification===null){
+                                        result(null,{status:false,msgs:["Error while updating the verification status"]});
+                                    }
+                                    else{
+                                        result(null,{status:true});
+                                    }
+                                })
+                                .catch((error)=>{
+                                    result(error,null);
+                                })                                    
+                            }
+                        })
+                        .catch((err)=>{
+                            result(err,null);
+                        })
+                    }
+                    else{
+                    result(null,{status:false,msgs:["OTP is Incorrect"]});
+                    }
+
+                }
+        }).catch(err=>{ result(err,null);})
+
     }
     catch(err){
         result(err,null);
