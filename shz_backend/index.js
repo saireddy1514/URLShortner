@@ -13,7 +13,7 @@ dotenv.config();
 mongoose.connect(process.env.DB_URL,{useNewUrlParser:true}).then(()=>{console.log("Database connection established")}).catch((err)=>{console.log(err)})
 
 // 
-require('./src/routes/url_shortner.route')(app);
+require('./src/routes/shz.route')(app);
 
 // Route testing api
 app.get('/',(req,res)=>{

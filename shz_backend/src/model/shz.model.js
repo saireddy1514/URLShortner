@@ -1,9 +1,9 @@
 const urlSchema = require('../schemas/url_shortner.schema');
 const userSchema = require('../schemas/user.schema');
 const otpSchema = require('../schemas/otp.schema');
-const helper = require('../helpers/url_shortner.helpers');
+const helper = require('../helpers/shz.helpers');
 const otpConfig = require('../config/otp.config');
-const validator = require('../validators/url_shortner.validator');
+const validator = require('../validators/shz.validator');
 
 const randomstring = require("randomstring"); //random string library for randomstring generation
 const bcrypt = require('bcrypt');

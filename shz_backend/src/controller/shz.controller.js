@@ -1,4 +1,4 @@
-const url_shortner_model = require("../model/url_shortner.model");
+const url_shortner_model = require("../model/shz.model");
 exports.convertShortUrl = (req, res) => {
   url_shortner_model.ShortUrlModel({ link: req.body.link }, (err, data) => {
     if (err) {
